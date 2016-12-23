@@ -1,0 +1,48 @@
+<div class="close-header-layer"></div>
+
+
+
+                    
+                <div class="clear"></div>
+           
+
+            <div class="content-push">
+
+                <div class="breadcrumb-box">
+                    <a href="#">Home</a>
+                    <a href="#">Login Form</a>
+                </div>
+
+                <div class="information-blocks">
+                    <div class="row">
+                        <div class="col-sm-6 information-entry">
+                            <div class="login-box">
+                                <div class="article-container style-1">
+                                    <h3>Registered Customers</h3>
+                                </div>
+                                <form>
+                                    <label>login</label>
+                                    <input class="simple-field" type="text" placeholder="login" value="" ng-model="data.login"/>
+                                    <label>Password</label>
+                                    <input class="simple-field" type="password" placeholder="Enter Password" value="" ng-model="data.password"/>
+                                    <div style="color:red;">{{erreur}}</div><br/>
+                                    <div class="button style-10" ng-click="doLogIn()">Login Page<input type="submit" value="" /></div>
+                                    <div  ng-click="FBLogin()"><img alt="fb" src="img/fb_login.png" /></div>
+                                    
+                                </form>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-6 information-entry">
+                            <div class="login-box">
+                                <div class="article-container style-1">
+                                    <h3>New Customers/BusinessConsumer</h3>
+                                </div>
+                                <a class="button style-12" href="#/inscriptionBusiness">Register as business</a>
+                                <a class="button style-12" href="#/inscriptionCustomer">Register as customer</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+</div>

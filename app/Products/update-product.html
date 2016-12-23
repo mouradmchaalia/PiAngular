@@ -1,0 +1,40 @@
+<div class="content-push">
+
+                <div class="breadcrumb-box">
+                    <a href="#">Home</a>
+                    <a href="#">Add Product Form</a>
+                </div>
+
+                <div class="information-blocks">
+                    <div class="row">
+                        <div class="col-sm-6 information-entry">
+                            <div class="login-box">
+                                <div class="article-container style-1">
+                                    <h3>Add new Product</h3>
+                                    <p>Lorem ipsum dolor amet, conse adipiscing, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                                <form ng-upload enctype="multipart/form-data">
+                                    <label>Name</label>
+                                    <input class="simple-field" type="text" placeholder="Enter the product name" value="" ng-model="product.product_Name"/>
+                                    <label>Description</label>
+                                    <input class="simple-field" type="text" placeholder="Enter the product description" value="" ng-model="product.product_Description"/>
+                                    <label>Tag</label>
+                                    <input class="simple-field" type="text" placeholder="Enter the product tag" value="" ng-model="product.product_Tag"/>
+                                    <label>Quantity</label>
+                                    <input class="simple-field" type="text" placeholder="Enter the product quantity" value="" ng-model="product.product_Quantity"/>
+                                    <label>Price</label>
+                                    <input class="simple-field" type="text" placeholder="Enter the product price" value="" ng-model="product.product_Price"/>
+                                    
+                                    <div class="button style-10">Save<input type="submit" value="" ng-click="
+                                        updateProduct({id:product.id_Product,name:product.product_Name,
+                                                  desc:product.product_Description,
+                                                  tag:product.product_Tag,
+                                                  price:product.product_Price,
+                                                  qte:product.product_Quantity})"/></div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+</div>

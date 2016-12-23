@@ -1,0 +1,229 @@
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+<script src="js/idangerous.swiper.min.js"></script>
+<script src="js/global.js"></script>
+
+
+<div class="information-blocks" ng-controller="ShoppingCartCtrl">
+  <div class="row">
+    <div class="col-sm-9 information-entry">
+      <h3 class="cart-column-title size-1"><i class="fa fa-shopping-cart"></i>&nbsp;You have {{myproducts.length}} Items </h3>
+      <div class="traditional-cart-entry style-1"  ng-repeat="product in myproducts" >
+         
+     
+              <div class="button-x"><a ng-click="removeItem($index)"><i class="fa fa-close"></i></a></div>
+        <a class="image" href="#"><img alt="" src="{{product.product_Image}}"></a>
+        <div class="content">
+          <div class="cell-view">
+          <a class="title" href="#">{{product.product_Name}}</a>
+            
+            <div class="inline-description">{{product.product_Description}}</div>
+          <div class="price">
+         <div class="current">
+             Price:
+    <input type="number"  class="field"  ng-model="product.product_Price" max="{{product.product_Price}}" min="{{product.product_Price}}" readonly> </p>
+             </div>
+              
+    <div class="current">
+             Quantity available:<input type="text"  class="field" ng-model="quantite" value="{{product.product_Quantity}}"/>
+    </div>
+           </div>
+            <div ng-repeat="qt in lineitems" ng-if="qt.product.id_Product==product.id_Product ">
+            <div class="quantity-selector detail-info-entry">
+              <div class="detail-info-entry-title">Quantity &nbsp;
+                       <input type="text" class="field" ng-model="qt.lineItem_Quantity"  value="{{qt.lineItem_Quantity}}" readonly  >
+                <input type="number" ng-model="product.product_Quantity"   min="1"  value="{{product.product_Quantity}}" max="{{product.product_Quantity}}" >
+                  
+               <p> subTotal: {{product.product_Price * product.product_Quantity }}</p> 
+                  </div>
+    
+<a class="button style-17" ng-href="#/updateQuantity/{{product.id_Product}}/{{qt.lineItem_Quantity}}">Update Cart</a>
+            </div>
+         </div>
+          </div>
+        </div>
+        <!-- RATING-->
+      <div star-rating rating="starRating3" click="click3(param)" mouse-hover="mouseHover3(param)" mouse-leave="mouseLeave3(param)"></div>
+            <div> <span class="label label-primary">Star Rating: {{starRating3}}</span>
+ 
+                <button><a href="#/vote/{{product.id_Product}}/1/{{starRating3}}">VOTE</a></button>
+        </div>
+        <!--fin  RATING-->
+      </div>
+<div class="row">
+        <div class="information-entry col-md-6">
+          <div class="sale-entry">
+            <div class="hot-mark red">hot</div>
+            <div class="sale-price"><span>-40%</span> winter Sale</div>
+            <div class="sale-description">Lorem ipsum dolor sit amet, consectetur adipisc elit, sed do</div>
+          </div>
+        </div>
+        <div class="information-entry col-md-6">
+          <div class="sale-entry">
+            <div class="hot-mark red">hot</div>
+            <div class="sale-price"><span>FREE</span> UK delivery</div>
+            <div class="sale-description">Lorem ipsum dolor sit amet, consectetur adipisc elit, sed do</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm-3 information-entry">
+      <h3 class="cart-column-title size-1" style="text-align: center;">TOTAL  
+         
+          </h3>
+      <div class="sidebar-subtotal" >
+        <div class="price-data">
+          <div class="main">{{total() |number:2}}$</div>
+         
+          <div class="title">Excluding tax &amp; shipping</div>
+          <div class="subtitle">ORDERS WILL BE PROCESSED IN USD</div>
+        </div>
+        <div class="additional-data" >
+            <p>#<a href="#/listOrder">Check my last orders</a></p>
+      <a class="button style-10" ng-href="#/order/{{total() |number:2}}">ORDER NOW</a>
+     </div>
+      </div>
+   </div>
+  </div>
+</div>
+
+ <div class="information-blocks">
+   <div class="row">
+    <div class="col-sm-4 information-entry">
+      <h3 class="block-title inline-product-column-title">Featured products</h3>
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-1.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-2.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-3.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="col-sm-4 information-entry">
+      <h3 class="block-title inline-product-column-title">Featured products</h3>
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-1.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-2.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-3.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="col-sm-4 information-entry">
+      <h3 class="block-title inline-product-column-title">Featured products</h3>
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-1.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-2.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="inline-product-entry">
+        <a href="#" class="image"><img alt="" src="img/product-image-inline-3.jpg"></a>
+        <div class="content">
+          <div class="cell-view">
+            <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+            <div class="price">
+              <div class="prev">$199,99</div>
+              <div class="current">$119,99</div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
+

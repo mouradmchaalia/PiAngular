@@ -1,0 +1,26 @@
+
+<div class="">
+                                <div class="article-container style-1">
+                                    <h3>welcom {{currentUser.first_Name}}</h3>
+                                </div>
+                                <form>
+                                    <!--<label>id</label>
+                                    <input ng-model="data.{{currentUser.customer_Id}}" placeholder="{{currentUser.customer_Id}}"/>-->
+                                    <label>address</label>
+                                    <input class="simple-field" type="text" placeholder="{{currentUser.address}}" ng-model="data.address" />
+                                    <label>email</label>
+                                    <input class="simple-field" type="email" placeholder="{{currentUser.email}}" ng-model="data.email" />
+                                    <label>first name</label>
+                                    <input class="simple-field" type="text" placeholder="{{currentUser.first_Name}}" ng-model="data.first_Name" />
+                                    <label>last name</label>
+                                    <input class="simple-field" type="text" placeholder="{{currentUser.lastName}}" ng-model="data.lastName" />
+                                    <label>phone</label>
+                                    <input class="simple-field" type="number" placeholder="{{currentUser.phone}}" ng-model="data.phone" />
+                                    <label>login</label>
+                                    <input class="simple-field" type="text" placeholder="{{currentUser.login}}" ng-model="data.login" />
+                                    <label>password</label>
+                                    <input class="simple-field" type="password" placeholder="{{currentUser.password}}" ng-model="data.password" />
+                                    <div class="button style-10" ng-click="update()" >update</div>
+                                    <div class="button style-10" ng-click="delete()" >desactivte account</div>
+                                </form>
+                            </div>

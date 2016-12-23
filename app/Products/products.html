@@ -1,0 +1,345 @@
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+<script src="js/idangerous.swiper.min.js"></script>
+<script src="js/global.js"></script>
+
+<div class="content-push">
+
+  <div class="breadcrumb-box" style="float:left;">
+    <a href="#">Home</a>
+    <a href="#">All Products</a>
+    <label class="item item-input" name="search" style="margin-top:-30px;margin-left:979px;">
+                
+                <input type="search" placeholder="YouBay Search" ng-model="query">
+                <i class="fa fa-search"></i>
+            </label>  
+  </div>
+    <!--<div style="display: inline-block;float:left;">
+    <input type="search" placeholder="Search" style="margin-left: 829px;width: 150px; height: 23px;" ng-model="query"/>
+      <i class="fa fa-search"></i>
+   </div>-->
+    
+  <div class="information-blocks">
+    <div class="row">
+      <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
+        <div class="page-selector">
+          <div class="pages-box hidden-xs">
+            <a href="#" class="square-button active">1</a>
+            <a href="#" class="square-button">2</a>
+            <a href="#" class="square-button">3</a>
+            <div class="divider">...</div>
+            <a href="#" class="square-button"><i class="fa fa-angle-right"></i></a>
+          </div>
+          <div class="shop-grid-controls">
+            <div class="entry">
+              <div class="inline-text">Sort by</div>
+              <div class="simple-drop-down">
+                <select ng-model="choice">
+                  <option value="category_id_Category">Category</option>
+                  <option value="product_Price">Price</option>
+                  <option value="product_Name">Name</option>
+                  <option>Rating</option>
+                  
+                </select>
+              </div>
+              <div class="sort-button"></div>
+            </div>
+            <div class="entry">
+              <div class="view-button active grid"><i class="fa fa-th"></i></div>
+              <div class="view-button list"><i class="fa fa-list"></i></div>
+            </div>
+            <div class="entry">
+              <div class="inline-text">Show</div>
+              <div class="simple-drop-down" style="width: 75px;">
+                <select>
+                  <option>12</option>
+                  <option>20</option>
+                  <option>30</option>
+                  <option>40</option>
+                  <option>all</option>
+                </select>
+              </div>
+              <div class="inline-text">per page</div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="row shop-grid grid-view">
+
+          <div class="col-md-3 col-sm-4 shop-grid-item" ng-repeat="product in products|filter:query|orderBy:choice">
+            <div class="product-slide-entry shift-image">
+              <div class="product-image">
+                <img src="{{product.product_Image}}" alt="" style="height:240px;width:240px;"/>
+                <img src="{{product.product_Image}}" alt="" style="height:240px;width:240px;"/>
+                <div class="bottom-line left-attached">
+                  <a class="bottom-line-a square"><i class="fa fa-shopping-cart"></i></a>
+                  <a class="bottom-line-a square"><i class="fa fa-heart"></i></a>
+                  <a class="bottom-line-a square"><i class="fa fa-retweet"></i></a>
+                  <a class="bottom-line-a square"><i class="fa fa-expand"></i></a>
+                </div>
+              </div>
+              <a class="tag" href="#">{{product.category.category_Name}}</a>
+              <a class="title" href="#/detail-product/{{product.id_Product}}">{{product.product_Name}}</a>
+              <div class="rating-box">
+                <div class="star"><i class="fa fa-star"></i></div>
+                <div class="star"><i class="fa fa-star"></i></div>
+                <div class="star"><i class="fa fa-star"></i></div>
+                <div class="star"><i class="fa fa-star"></i></div>
+                <div class="star"><i class="fa fa-star"></i></div>
+                <div class="reviews-number">25 reviews</div>
+              </div>
+              <div class="article-container style-1">
+                <p>{{product.product_Description}}</p>
+              </div>
+              <div class="price">
+                <div class="prev">$199,99</div>
+                <div class="current">{{product.product_Price}}$</div>
+                  <ul>
+                        <li><a class="tag" href="#/detail-product/{{product.id_Product}}" style="font-size:11px;margin-top:7px;color:#349615;"> > View Details</a></li>
+                     <li><i class="fa fa-comments" style="color:darkblue"></i><a href="#/comment/{{product.id_Product}}}" style="font-size:11px;margin-top:7px;color:darkblue;">Comments</a></li>   
+                  </ul>
+              </div>
+              <div class="list-buttons">
+                <a class="button style-10">Add to cart</a>
+                <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+
+        </div>
+        <div class="page-selector">
+          <div class="description">Showing: 1-3 of 16</div>
+          <div class="pages-box">
+            <a href="#" class="square-button active">1</a>
+            <a href="#" class="square-button">2</a>
+            <a href="#" class="square-button">3</a>
+            <div class="divider">...</div>
+            <a href="#" class="square-button"><i class="fa fa-angle-right"></i></a>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8 blog-sidebar">
+        <div class="information-blocks categories-border-wrapper">
+                                <div class="block-title size-3">Categories</div>
+                                <div class="accordeon">
+                                    <div class="accordeon-title" ng-repeat="category in categories"> {{category.category_Name}}</div>
+                                    <div class="accordeon-entry">
+                                        <div class="article-container style-1" ng-repeat="category in categories">
+                                            
+                                            <ul>
+                                                <li><a href="#"></a>{{category.category_Name}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                       
+                                   
+                                </div>
+                            </div>
+        
+  <!--      <div class="information-blocks" style="inline : block">
+          <div class="block-title size-2">Sort by sizes</div>
+          <div class="range-wrapper">
+            <div id="prices-range"></div>
+            <div class="range-price">
+              Price:
+              <div class="min-price"><b>&pound;<span>0</span></b></div>
+              <b>-</b>
+              <div class="max-price"><b>&pound;<span>200</span></b></div>
+            </div>
+            <a class="button style-14">filter</a>
+          </div>
+        </div>-->
+
+   <!--     <div class="information-blocks">
+          <div class="block-title size-2">Sort by sizes</div>
+          <div class="size-selector">
+            <div class="entry active">xs</div>
+            <div class="entry">s</div>
+            <div class="entry">m</div>
+            <div class="entry">l</div>
+            <div class="entry">xl</div>
+            <div class="spacer"></div>
+          </div>
+        </div>-->
+
+        <!--<div class="information-blocks">
+          <div class="block-title size-2">Sort by brands</div>
+          <div class="row">
+            <div class="col-xs-6">
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Armani
+              </label>
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Bershka Co
+              </label>
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Nelly.com
+              </label>
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Zigzag Inc
+              </label>
+            </div>
+            <div class="col-xs-6">
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Armani
+              </label>
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Bershka Co
+              </label>
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Nelly.com
+              </label>
+              <label class="checkbox-entry">
+                <input type="checkbox" /> <span class="check"></span> Zigzag Inc
+              </label>
+            </div>
+          </div>
+        </div>-->
+
+       <!-- <div class="information-blocks">
+          <div class="block-title size-2">Sort by colours</div>
+          <div class="color-selector detail-info-entry">
+            <div style="background-color: #cf5d5d;" class="entry active"></div>
+            <div style="background-color: #c9459f;" class="entry"></div>
+            <div style="background-color: #689dd4;" class="entry"></div>
+            <div style="background-color: #68d4aa;" class="entry"></div>
+            <div style="background-color: #a8d468;" class="entry"></div>
+            <div style="background-color: #d4c368;" class="entry"></div>
+            <div style="background-color: #c2c2c2;" class="entry"></div>
+            <div style="background-color: #000000;" class="entry"></div>
+            <div style="background-color: #f0f0f0;" class="entry"></div>
+            <div class="spacer"></div>
+          </div>
+        </div>-->
+
+      </div>
+    </div>
+  </div>
+
+  <div class="information-blocks">
+    <div class="row">
+      <div class="col-sm-4 information-entry">
+        <h3 class="block-title inline-product-column-title">Featured products</h3>
+        <div class="inline-product-entry" ng-repeat="product in products | limitTo : 3">
+          <a href="#" class="image"><img alt="" src="{{product.product_Image}}"></a>
+          <div class="content">
+            <div class="cell-view">
+              <a href="#" class="title">{{product.product_Name}}</a>
+              <div class="price">
+                <div class="prev">$199,99</div>
+                <div class="current">{{product.product_Price}}$</div>
+              </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+       
+
+        
+      </div>
+      <div class="col-sm-4 information-entry">
+        <h3 class="block-title inline-product-column-title">Popular products</h3>
+
+        <div class="inline-product-entry" ng-repeat="product in products | limitTo : 3" ng-if="$index %2 == 0 " >
+          <a href="#" class="image"><img alt="" src="{{product.product_Image}}"></a>
+          <div class="content">
+            <div class="cell-view">
+              <a href="#" class="title">Ladies Pullover Batwing Sleeve Zigzag</a>
+              <div class="price">
+                <div class="prev">$199,99</div>
+                <div class="current">$119,99</div>
+              </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+          
+          
+          
+      </div>
+      <div class="col-sm-4 information-entry">
+        <h3 class="block-title inline-product-column-title">Latest News</h3>
+        <div class="inline-product-entry" ng-repeat="category in categories | limitTo : 2">
+            
+          <a href="#" class="image"><img alt="" src="{{category.category_Image}}"></a><div class="hot-mark red" style="-webkit-transform: rotate(30deg);margin-right:190px;">hot</div>
+            
+          <div class="content">
+              
+            <div class="cell-view">
+                <p>New Category</p>
+              <a href="#" class="title">{{category.category_Name}}</a>
+              
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+</div>
+<div class="clear"></div>
+
+</div>
+
+<div class="overlay-popup" id="image-popup">
+
+  <div class="overflow">
+    <div class="table-view">
+      <div class="cell-view">
+        <div class="close-layer"></div>
+        <div class="popup-container">
+          <img class="gallery-image" src="img/portfolio-1.jpg" alt="" />
+          <div class="close-popup"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="cart-box popup">
+  <div class="popup-container">
+    <div class="cart-entry">
+      <a class="image"><img src="img/product-menu-1.jpg" alt="" /></a>
+      <div class="content">
+        <a class="title" href="#">Pullover Batwing Sleeve Zigzag</a>
+        <div class="quantity">Quantity: 4</div>
+        <div class="price">$990,00</div>
+      </div>
+      <div class="button-x"><i class="fa fa-close"></i></div>
+    </div>
+    <div class="cart-entry">
+      <a class="image"><img src="img/product-menu-1_.jpg" alt="" /></a>
+      <div class="content">
+        <a class="title" href="#">Pullover Batwing Sleeve Zigzag</a>
+        <div class="quantity">Quantity: 4</div>
+        <div class="price">$990,00</div>
+      </div>
+      <div class="button-x"><i class="fa fa-close"></i></div>
+    </div>
+    <div class="summary">
+      <div class="subtotal">Subtotal: $990,00</div>
+      <div class="grandtotal">Grand Total <span>$1029,79</span></div>
+    </div>
+    <div class="cart-buttons">
+      <div class="column">
+        <a class="button style-3">view cart</a>
+        <div class="clear"></div>
+      </div>
+      <div class="column">
+        <a class="button style-4">checkout</a>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
